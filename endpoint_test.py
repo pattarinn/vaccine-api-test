@@ -9,6 +9,7 @@ class ApiTestCase(unittest.TestCase):
         self.URL = "https://wcg-apis.herokuapp.com"
 
         # create unreal citizen
+        # fake citizen id
         params = self.create_params_url("1105248761477", "Kel", "I.", "20/12/1995", "student", "somewhere")
         requests.post(self.URL + f"/registration?{params}")
 
