@@ -38,7 +38,7 @@ class ApiTestCase(unittest.TestCase):
             address: address of citizen
 
         Returns:
-
+            url containing parameters
         """
         return f"citizen_id={citizen_id}&name={name}&surname={surname}" \
                f"&birth_date={birth_date}&occupation={occupation}&address={address}"
