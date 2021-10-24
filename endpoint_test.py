@@ -69,14 +69,6 @@ class ApiTestCase(unittest.TestCase):
         # response should be like name should not be a script or something like invalid character
         self.assertEqual("reservation failed: name should not be a script", response.json()["feedback"])
 
-    def test_register_with_sql_injection_drop_table(self):
-        """Try to inject some sql script to drop table in their database."""
-        params = self.create_params_url("1111111111111", "1; DROP TABLE citizen", "1; DROP TABLE citizen",
-                                        "1/2/2000", "1; DROP TABLE citizen", "1; DROP TABLE citizen")
-        response = requests.post(self.URL + f"/registration?{params}")
-        # response should be like invalid character
-        self.assertEqual("reservation failed: invalid character", response.json()["feedback"])
-
     def test_register_with_unicode_citizen_id(self):
         """Try to register using unicode included in citizen id."""
         params = self.create_params_url("\u00B212345678900\u00B2", "power of 2", "last", "1/2/2000", "math", "math")
