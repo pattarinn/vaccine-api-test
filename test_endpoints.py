@@ -137,10 +137,9 @@ class ApiTestCase(unittest.TestCase):
 
     def test_successfully_make_reservation(self):
         """Test if the reservation can be made."""
-        response = requests.post(self.URL + f"/reservation?citizen_id=1105248761477&site_name=hi&vaccine_name=Pfizer")
-        self.assertEqual(200, response.status_code)
-        # response = requests.get(self.URL + "/reservation")
-        # self.assertEqual("1105248761477", response.json()["citizen-id"])
+        requests.post(self.URL + f"/reservation?citizen_id=1105248761477&site_name=hi&vaccine_name=Pfizer")
+        response = requests.get(self.URL + "/reservation/1105248761477")
+        self.assertEqual("1105248761477", response.json()[0]["citizen_id"])
 
     def test_reserve_unknown_vaccine(self):
         """Test of the user can make the reservation for vaccine that is not provided."""
