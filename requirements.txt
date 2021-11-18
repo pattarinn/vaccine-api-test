@@ -1,0 +1,3 @@
+requests
+unittest
+python-decouple

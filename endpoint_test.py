@@ -1,12 +1,13 @@
 import unittest
 import requests
+from decouple import config
 
 
 class ApiTestCase(unittest.TestCase):
     """Unit test for testing api provided by World Class Government."""
 
     def setUp(self) -> None:
-        self.URL = "https://wcg-apis.herokuapp.com"
+        self.URL = config('URL')
 
         # create unreal citizen
         # fake citizen id
